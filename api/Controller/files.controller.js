@@ -23,6 +23,5 @@ const data = async (req, res) => {
 
 module.exports = {
     hello,
-    testCsv,
     data
 }
