@@ -10,7 +10,7 @@ const convertCsvToJSON = (csv) => {
     return lines.slice(1).map(line => {
         return line.split(',').reduce((acc, cur, i) => {
             const toAdd = {};
-            if (keys[i]) {
+            if (keys[i] && cur) {
                 toAdd[keys[i]] = cur;
                 return { ...acc, ...toAdd };
             }

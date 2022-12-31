@@ -1,9 +1,30 @@
 const Express = require('express');
 require('dotenv').config();
+var cors = require('cors')
 const filesRouter = require('./Routes/files.routes');
 
 const app = Express();
 const port = process.env.PORT || 4001;
+
+// CORS dinamic config 
+const CORS = process.env.CORS || '*';
+const whitelist = CORS == '*' ? CORS : JSON.parse(CORS);
+
+var corsOptions = {
+  origin: function(origin, callback){
+    // allow requests with no origin 
+    // (like mobile apps or curl requests)
+    if(whitelist == '*') return callback(null, true);
+    if(whitelist.indexOf(origin) === -1){
+      var msg = 'The CORS policy for this site does not ' +
+                'allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  }
+}
+
+app.use(cors(corsOptions));
 
 app.listen(port, ()=>{
   console.log(`App listening on port ${port}`)
