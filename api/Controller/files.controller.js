@@ -1,6 +1,6 @@
 const { default: axios } = require("axios");
 const { convertCsvToJSON } = require("../Utils");
-const { getFiles } = require("./external_api.controller");
+const { getFullFiles, getFiles } = require("./external_api.controller");
 require('dotenv').config();
 
 const externalApi = process.env.EXTERNAL_API_URL;
@@ -13,6 +13,15 @@ const hello = async (req, res) => {
 };
 
 const data = async (req, res) => {
+    const data = await getFullFiles();
+
+    res.status(200).json({
+        message: "data returning",
+        data: data
+    });
+};
+
+const fileList = async (req, res) => {
     const data = await getFiles();
 
     res.status(200).json({
@@ -23,5 +32,6 @@ const data = async (req, res) => {
 
 module.exports = {
     hello,
-    data
+    data,
+    fileList
 }

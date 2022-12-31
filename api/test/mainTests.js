@@ -2,7 +2,7 @@ const { expect, assert } = require('chai');
 const externalFilesController = require('../Controller/external_api.controller');
 
 // Results
-const getFullFiles = externalFilesController.getFiles;
+const getFullFiles = externalFilesController.getFullFiles;
 const getFile = externalFilesController.getFileByName;
 
 describe('Files Controller', function() {

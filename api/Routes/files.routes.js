@@ -6,4 +6,6 @@ const router = express.Router();
 
 router.get('/data', filesController.data);
 
+router.get('/list', filesController.fileList);
+
 module.exports = router;

@@ -15,6 +15,14 @@ const getFiles = async () => {
                     .then(res => res.data.files)
                     .catch(err => null);
 
+    return fileNames
+}
+
+const getFullFiles = async () => {
+    const fileNames = await instanceAxios.get('secret/files')
+                    .then(res => res.data.files)
+                    .catch(err => null);
+
     const files = await Promise.all(fileNames.map(getFileByName));
 
     return files
@@ -33,5 +41,6 @@ const getFileByName = async (name) => {
 
 module.exports = {
     getFiles,
+    getFullFiles,
     getFileByName
 }
