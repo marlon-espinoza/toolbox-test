@@ -32,5 +32,6 @@ const getFileByName = async (name) => {
 }
 
 module.exports = {
-    getFiles
+    getFiles,
+    getFileByName
 }

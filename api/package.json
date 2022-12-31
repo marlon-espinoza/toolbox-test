@@ -6,7 +6,7 @@
   "module": "true",
   "scripts": {
     "start": "node index.js",
-    "test": "npm test"
+    "test": "node ./node_modules/mocha/bin/_mocha || exit 0"
   },
   "author": "Marlon Espinoza",
   "license": "ISC",
@@ -15,5 +15,9 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0"
   }
 }
